@@ -1,22 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+
+import "./App.css";
+import Quote from "./Quote";
+import Navbar from "./Navbar";
 
 function App() {
+  const [isDarkMode, setIsDarkMode] = useState(() => true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className = "App">
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+      <header className="App-header" style={isDarkMode ? { backgroundColor: "#2d3647" } : { backgroundColor: "#e2eefa" }}>
+        <h1 className={isDarkMode ? "text-center mb-5 text-light " : "text-center mb-5 text-dark"}>Random Quote Generator</h1>
+        <Quote isDarkMode={isDarkMode}/>
       </header>
     </div>
   );
